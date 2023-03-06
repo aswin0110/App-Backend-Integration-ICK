@@ -47,19 +47,15 @@ app.get('/api/employeelist', async (req,res) =>{
 
 
 //TODO: get single data from db  using api '/api/employeelist/:id'
-app.post('/api/employeelist', async (req,res) =>{
-
-    try {
-        var data = new employeeModel(req.body)
-        data.save()
-        res.json({status:"success"})
-    } catch (error) {
-        ("Error in adding to db")
+app.get('/api/employeelist/:id',async (req,res) =>{
+    const id = req.params.id;
+    const newData = {
+        _id:id
     }
-    
+    const data = await employeeModel.find(newData)
+    res.json(data)
+
 })
-
-
 
 
 //TODO: send data from db using api '/api/employeelist'
