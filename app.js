@@ -36,7 +36,6 @@ app.get('/api/employeelist', async (req,res) =>{
     try {
         let data = await employeeModel.find()
         res.json(data)
-        console.log(('working properly'));
     } 
     catch (error) {
         console.log(error);
@@ -94,6 +93,13 @@ app.delete('/api/employeelist/:id',async (req,res) =>{
 
 //TODO: Update  a employee data from db by using api '/api/employeelist'
 //Request body format:{name:'',location:'',position:'',salary:''}
+// app.put('/api/employeelist',(req,res) =>{
+    
+    
+//     var data= new employeeModel.findOneAndUpdate(req.body)
+//     data.save()
+// })
+
 const employeeSchema = new mongoose.Schema(
     {
         name:String,
