@@ -93,21 +93,13 @@ app.delete('/api/employeelist/:id',async (req,res) =>{
 
 //TODO: Update  a employee data from db by using api '/api/employeelist'
 //Request body format:{name:'',location:'',position:'',salary:''}
-// app.put('/api/employeelist', async (req, res) => {
-//     try {
-//       const { name, location, position, salary } = req.body;
-  
-//       const updatedEmployee = await employeeModel.findOneAndUpdate(
-//         { name },
-//         { location, position, salary },
-//         { new: true }
-//       );
-//         data.save()
-//       res.json(updatedEmployee);
-//     } catch (error) {
-//       res.status(500).json({ message: error.message });
-//     }
-//   });
+app.put('/api/employeelist',async (req, res) =>{
+
+    const data = await employeeModel.findOneAndUpdate({"_id": req.body._id},req.body)
+    res.json("Success")
+
+
+});
 
 const employeeSchema = new mongoose.Schema(
     {
